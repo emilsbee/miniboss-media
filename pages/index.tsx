@@ -10,20 +10,21 @@ export default function Home() {
 
   React.useEffect(() => {
     (async () => {
+      console.log('useEffect')
       const media = await getMedia();
       setMedia(media);
     })();
   }, []);
 
-  console.log('runs')
-
   const handleAddMedia = async (title: string) => {
+    console.log('handleAddMedia')
     const addedMedia = await addMedia(title);
     setMedia({ addedMedia, ...media });
     await refetchMedia();
   };
 
   const refetchMedia = async () => {
+    console.log('refetchMedia')
     const media = await getMedia();
     setMedia(media);
   };
