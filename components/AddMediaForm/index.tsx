@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Image from 'next/image';
 
 export const AddMediaForm = ({
   onAddMedia,
@@ -31,6 +32,7 @@ export const AddMediaForm = ({
               >
                 Pievienot
               </button>
+              <Image src="/images/minion-smirk.png" width={50} height={75} alt="Miniboss" />
               <button
                 onClick={() => setAdding(false)}
                 className="text-slate-300 bg-[#8B0000] p-2 rounded-md font-bold text-md w-[50%]"
