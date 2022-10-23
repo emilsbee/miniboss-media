@@ -35,7 +35,7 @@ export default function Home() {
   };
   
   return (
-    <div className="w-full h-full flex flex-col justify-start items-center p-10">
+    <div className="w-full h-full flex flex-col justify-start items-center p-10 pb-2 lg:pb-6">
       <div className="max-w-7xl	w-full h-full flex flex-col justify-between items-start">
         <Head>
           <title>Miniboss</title>
