@@ -55,6 +55,11 @@ export default function Home() {
             {media && media.sort((a, b) => a.title.localeCompare(b.title)).map((media) => (
               <MediaItem key={media.id} media={media} />
             ))}
+            {media.length > 0 && (
+              <div className="w-full flex justify-center">
+                <Image priority src="/images/minions-looking-up.png" width={200} height={150} alt="Miniboss" />
+              </div>
+            )}
           </div>
         </div>
         <AddMediaForm onAddMedia={handleAddMedia} />
