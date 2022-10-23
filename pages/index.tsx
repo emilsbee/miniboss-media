@@ -6,25 +6,32 @@ import { getMedia, addMedia } from 'queries/media';
 import { MediaItem, AddMediaForm } from 'components';
 
 export default function Home() {
-  const [media, setMedia] = React.useState<i.Media[] | null>(null);
+  const [media, setMedia] = React.useState<i.Media[]>([]);
 
   React.useEffect(() => {
     (async () => {
-      const media = await getMedia();
-      setMedia(media);
+      await refetchMedia();
     })();
   }, []);
 
-  // const handleAddMedia = async (title: string) => {
-  //   const addedMedia = await addMedia(title);
-  //   setMedia({ addedMedia, ...media });
-  //   await refetchMedia();
-  // };
+  const handleAddMedia = async (title: string) => {
+    setMedia([ { title, id: 'optimistic-update', downloaded: false }, ...media ]);
+    const addedMedia = await addMedia(title);
 
-  // const refetchMedia = async () => {
-  //   const media = await getMedia();
-  //   setMedia(media);
-  // };
+    if (addedMedia && media) {
+      setMedia([ addedMedia, ...media ]);
+    }
+
+    await refetchMedia();
+  };
+
+  const refetchMedia = async () => {
+    const fetchedMedia = await getMedia();
+
+    if (fetchedMedia) {
+      setMedia(fetchedMedia);
+    }
+  };
   
   return (
     <div className="w-full h-full flex flex-col justify-between items-start p-10">
@@ -35,11 +42,11 @@ export default function Home() {
         </h1>
       </div>
       <div className="w-full h-full flex flex-col gap-y-3">
-        {media && media.map((media) => (
+        {media && media.sort((a, b) => a.title.localeCompare(b.title)).map((media) => (
           <MediaItem key={media.id} media={media} />
         ))}
       </div>
-      <AddMediaForm onAddMedia={() => null} />
+      <AddMediaForm onAddMedia={handleAddMedia} />
     </div>
   )
 }
