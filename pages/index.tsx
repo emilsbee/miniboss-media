@@ -10,7 +10,8 @@ export default function Home() {
 
   React.useEffect(() => {
     (async () => {
-      await refetchMedia();
+      const media = await getMedia();
+      setMedia(media);
     })();
   }, []);
 
@@ -27,17 +28,17 @@ export default function Home() {
   
   return (
     <div className="w-full h-full flex flex-col justify-between items-start p-10">
-        <div className="max-w-7xl flex justify-center items-end flex-wrap gap-x-10 gap-y-6 mb-6">
-          <Image src="/images/miniboss.png" width={75} height={150} alt="Miniboss" />
-          <h1 className="font-bold text-2xl text-slate-300">
-            Minibosa filmas un seriali
-          </h1>
-        </div>
-        <div className="w-full flex flex-col gap-y-3">
-          {media && Object.entries(media).map(([key, value]) => (
-            <MediaItem key={key} media={value} />
-          ))}
-        </div>
+      <div className="max-w-7xl flex justify-center items-end flex-wrap gap-x-10 gap-y-6 mb-6">
+        <Image src="/images/miniboss.png" width={75} height={150} alt="Miniboss" />
+        <h1 className="font-bold text-2xl text-slate-300">
+          Minibosa filmas un seriali
+        </h1>
+      </div>
+      <div className="w-full flex flex-col gap-y-3">
+        {media && Object.entries(media).map(([key, value]) => (
+          <MediaItem key={key} media={value} />
+        ))}
+      </div>
       <AddMediaForm onAddMedia={handleAddMedia} />
     </div>
   )
