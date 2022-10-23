@@ -15,6 +15,8 @@ export default function Home() {
     })();
   }, []);
 
+  console.log('runs')
+
   const handleAddMedia = async (title: string) => {
     const addedMedia = await addMedia(title);
     setMedia({ addedMedia, ...media });
