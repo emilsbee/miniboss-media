@@ -7,4 +7,5 @@ export type MediaList = {
 export type Media = {
   title: string;
   downloaded: boolean;
+  id: string;
 };

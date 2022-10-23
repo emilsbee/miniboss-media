@@ -6,7 +6,7 @@ import { getMedia, addMedia } from 'queries/media';
 import { MediaItem, AddMediaForm } from 'components';
 
 export default function Home() {
-  const [media, setMedia] = React.useState<i.MediaList | null>(null);
+  const [media, setMedia] = React.useState<i.Media[] | null>(null);
 
   React.useEffect(() => {
     (async () => {
@@ -15,16 +15,16 @@ export default function Home() {
     })();
   }, []);
 
-  const handleAddMedia = async (title: string) => {
-    const addedMedia = await addMedia(title);
-    setMedia({ addedMedia, ...media });
-    await refetchMedia();
-  };
+  // const handleAddMedia = async (title: string) => {
+  //   const addedMedia = await addMedia(title);
+  //   setMedia({ addedMedia, ...media });
+  //   await refetchMedia();
+  // };
 
-  const refetchMedia = async () => {
-    const media = await getMedia();
-    setMedia(media);
-  };
+  // const refetchMedia = async () => {
+  //   const media = await getMedia();
+  //   setMedia(media);
+  // };
   
   return (
     <div className="w-full h-full flex flex-col justify-between items-start p-10">
@@ -34,12 +34,12 @@ export default function Home() {
           Minibosa filmas un seriali
         </h1>
       </div>
-      <div className="w-full flex flex-col gap-y-3">
-        {media && Object.entries(media).map(([key, value]) => (
-          <MediaItem key={key} media={value} />
+      <div className="w-full h-full flex flex-col gap-y-3">
+        {media && media.map((media) => (
+          <MediaItem key={media.id} media={media} />
         ))}
       </div>
-      <AddMediaForm onAddMedia={handleAddMedia} />
+      <AddMediaForm onAddMedia={() => null} />
     </div>
   )
 }
