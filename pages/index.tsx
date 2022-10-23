@@ -55,8 +55,8 @@ export default function Home() {
             <MediaItem key={media.id} media={media} />
           ))}
         </div>
-        <AddMediaForm onAddMedia={handleAddMedia} />
       </div>
+      <AddMediaForm onAddMedia={handleAddMedia} />
     </div>
   )
 }

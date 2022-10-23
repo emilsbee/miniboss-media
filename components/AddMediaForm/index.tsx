@@ -16,7 +16,7 @@ export const AddMediaForm = ({
   }
 
   return (
-    <div className="w-full pb-5 pt-5 flex justify-center sticky bottom-0 bg-black">
+    <div className="w-full p-5 flex justify-center fixed bottom-0 bg-black">
       <div className="max-w-3xl w-full">
         {adding ? (
           <div className="w-full flex flex-col gap-4">
