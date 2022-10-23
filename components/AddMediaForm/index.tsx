@@ -32,7 +32,7 @@ export const AddMediaForm = ({
               >
                 Pievienot
               </button>
-              <Image src="/images/minion-smirk.png" width={50} height={75} alt="Miniboss" />
+              <Image src="/images/minion-smirk.png" width={50} height={75} alt="Miniboss" priority />
               <button
                 onClick={() => setAdding(false)}
                 className="text-slate-300 bg-[#8B0000] p-2 rounded-md font-bold text-md w-[50%]"

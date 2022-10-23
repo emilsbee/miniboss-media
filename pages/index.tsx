@@ -42,9 +42,9 @@ export default function Home() {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <div className="max-w-7xl flex justify-center items-end flex-wrap gap-x-10 gap-y-6 mb-6">
-          <Image src="/images/miniboss.png" width={75} height={150} alt="Miniboss" />
+          <Image priority src="/images/miniboss.png" width={75} height={150} alt="Miniboss" />
           <div className="absolute top-0 right-[40px]">
-            <Image src="/images/minions-hanging.png" width={55} height={140} alt="Miniboss" />
+            <Image priority src="/images/minions-hanging.png" width={55} height={140} alt="Miniboss" />
           </div>
           <h1 className="font-bold text-2xl text-slate-300">
             Minibosa filmas un seriali
