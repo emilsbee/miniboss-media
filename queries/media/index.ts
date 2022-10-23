@@ -1,12 +1,14 @@
 import * as i from 'types';
-import { ref, get, child, set } from "firebase/database";
+import { ref, get, child, set, query } from "firebase/database";
 import { v4 as uuidv4 } from "uuid";
 
 import { db } from 'services'
 
 export const getMedia = async (): Promise<i.MediaList | null> => {
   try {
-    const snapshot = await get(child(ref(db), 'media'));
+    const snapshot = await get(query(ref(db, 'media/')));
+    const snapshotPrev = await get(child(ref(db), 'media'));
+    
     if (snapshot.exists()) {
       console.log(snapshot.val())
       return snapshot.val();
