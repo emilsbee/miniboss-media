@@ -1,6 +1,7 @@
 import * as i from 'types';
 import * as React from 'react';
 import Image from 'next/image';
+import Head from 'next/head';
 
 import { getMedia, addMedia } from 'queries/media';
 import { MediaItem, AddMediaForm } from 'components';
@@ -35,6 +36,10 @@ export default function Home() {
   
   return (
     <div className="w-full h-full flex flex-col justify-between items-start p-10">
+      <Head>
+        <title>Miniboss</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className="max-w-7xl flex justify-center items-end flex-wrap gap-x-10 gap-y-6 mb-6">
         <Image src="/images/miniboss.png" width={75} height={150} alt="Miniboss" />
         <h1 className="font-bold text-2xl text-slate-300">
