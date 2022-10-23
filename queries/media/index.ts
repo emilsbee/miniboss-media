@@ -5,10 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 import { db } from 'services'
 
 export const getMedia = async (): Promise<i.MediaList | null> => {
-  console.log('getMedia')
   try {
     const snapshot = await get(child(ref(db), 'media'));
     if (snapshot.exists()) {
+      console.log(snapshot.val())
       return snapshot.val();
     } else return null;
   } catch (e) {
